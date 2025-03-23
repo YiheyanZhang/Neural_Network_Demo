@@ -5,6 +5,7 @@ https://www.bilibili.com/video/BV1BQR3YuEc7/?spm_id_from=333.1007.tianma.2-2-5.c
 This program just use to study and practice neutal network
 Editor: Yiheyan Zhang
 """
+from matplotlib import pyplot as plt
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -165,9 +166,9 @@ for epoch in range(epochs):
 
     print(f'Epoch{epoch + 1}')
     print("Train Loss: ",round(total_loss_train_plot[-1], 4))
-    print("Train Acc: %.4f", round(total_acc_train_plot[-1], 4))
-    print("Validation Loss: %.4f", round(total_loss_validation_plot[-1], 4))
-    print("Validation Acc: %.4f", round(total_acc_validation_plot[-1], 4))
+    print("Train Acc: ", round(total_acc_train_plot[-1], 4))
+    print("Validation Loss: ", round(total_loss_validation_plot[-1], 4))
+    print("Validation Acc: ", round(total_acc_validation_plot[-1], 4))
     print("===========================")
 
 # 保存模型
@@ -187,6 +188,27 @@ def main():
             total_acc_test += acc
         test_acc = total_acc_test / len(testing_data)
         print("Test Acc: ", round(test_acc, 4))
+
+    # 绘制图像
+    fig,axs = plt.subplots(1,2, figsize=(25,10))
+
+    axs[0].plot(total_loss_train_plot, label="Train Loss")
+    axs[0].plot(total_loss_validation_plot, label="Validation Loss")
+    axs[0].set_title("Train and Validation Loss")
+    axs[0].set_xlabel("Epoch")
+    axs[0].set_ylabel("Loss")
+    axs[0].set_ylim(0, 1)
+    axs[0].legend()
+
+    axs[1].plot(total_acc_train_plot, label="Train Acc")
+    axs[1].plot(total_acc_validation_plot, label="Validation Acc")
+    axs[1].set_title("Train and Validation Acc")
+    axs[1].set_xlabel("Epoch")
+    axs[1].set_ylabel("Acc")
+    axs[1].set_ylim(0, 1)
+    axs[1].legend()
+
+    plt.show()
 
 if __name__ == "__main__":
     main()
