@@ -233,6 +233,17 @@ for epoch in range(epochs):
 # 保存模型
 torch.save(model.state_dict(), "model/images_classify_study_model.pth")
 
+def predict_image(image_path):
+    image = Image.open(image_path).convert("RGB")
+    image = transform(image).to(device=device)
+    # unsqueeze() 用于增加维度
+    # 转换为 4 维张量
+    image = image.unsqueeze(0)
+    output = model(image)
+
+    output = torch.argmax(output, dim=1).item()
+    return label_encoder.inverse_transform([output])
+
 def main():
     model = CNN_Net().to(device=device)
     model.load_state_dict(torch.load("model/images_classify_study_model.pth"))
@@ -269,6 +280,9 @@ def main():
     axs[1].set_ylim(0, 1)
 
     fig.show()
+
+    # 预测单张图片
+    # print(predict_image("dataset/afhq/train/cat/flickr_cat_000002.jpg"))
 
 
 if __name__ == "__main__":
