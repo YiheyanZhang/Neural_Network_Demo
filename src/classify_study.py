@@ -24,6 +24,7 @@ print("device:", device)
 # 数据集预处理
 data_df = pd.read_csv("dataset/riceClassification.csv")
 data_df.dropna(inplace=True) # 删除缺失值
+# axis=1 按列删除 axis=0 按行删除
 data_df.drop(["id"], axis=1, inplace=True) # 删除id列
 
 # 复制原始数据集
@@ -123,7 +124,7 @@ for epoch in range(epochs):
     total_loss_train = 0 # 训练集损失
     total_acc_validation = 0 # 验证集准确率
     total_loss_validation = 0 # 验证集损失
-    
+
     model.train()
     for data in (train_dataloader):
         # 从训练集中取出数据
