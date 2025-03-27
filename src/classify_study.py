@@ -4,6 +4,23 @@ With the help from this video
 https://www.bilibili.com/video/BV1BQR3YuEc7/?spm_id_from=333.1007.tianma.2-2-5.click&vd_source=79934a7c8eba67c8575bcf39607a4313
 This program just use to study and practice neutal network
 Editor: Yiheyan Zhang
+
+二分类问题
+数据集：https://www.kaggle.com/vbookshelf/rice-leaf-diseases
+数据集包含两个类别：Bacterial leaf blight 和 Brown spot
+1. 数据预处理
+2. 创建数据集
+3. 创建模型
+4. 定义损失函数和优化器
+5. 训练模型
+6. 评估模型
+7. 保存模型
+
+MyModel 网络结构：
+1. 输入层
+2. 全连接层
+3. 输出层
+4. Sigmoid 激活函数
 """
 from matplotlib import pyplot as plt
 import torch

@@ -1,3 +1,24 @@
+"""
+多分类问题
+数据集：https://www.kaggle.com/andrewmvd/animal-faces
+数据集包含三个类别：猫、狗、狐狸
+
+1. 数据预处理
+2. 创建数据集
+3. 创建模型
+4. 定义损失函数和优化器
+5. 训练模型
+6. 评估模型
+7. 保存模型
+
+CNN 网络结构：
+1. 卷积层：3*128*128 -> 32*128*128 -> 32*64*64 -> 64*64*64 -> 64*32*32 -> 128*32*32 -> 128*16*16
+2. 池化层
+3. 激活函数
+4. 扁平化层
+5. 全连接层
+6. 输出层
+"""
 import torch
 from torch import nn
 from torch.optim import Adam
@@ -279,7 +300,7 @@ def main():
     axs[1].set_ylabel("acc")
     axs[1].set_ylim(0, 1)
 
-    fig.show()
+    plt.show()
 
     # 预测单张图片
     # print(predict_image("dataset/afhq/train/cat/flickr_cat_000002.jpg"))
